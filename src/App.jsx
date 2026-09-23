@@ -1,10 +1,9 @@
 import React from 'react';
 import EmotionAnalyzer from './components/EmotionAnalyzer';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="w-full min-h-screen">
       <EmotionAnalyzer />
     </div>
   );
