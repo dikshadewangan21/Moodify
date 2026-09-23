@@ -41,15 +41,11 @@ const normalizeIntensity = (val) => {
  * @returns {Promise<{ emotion: string, intensity: number, summary: string, suggestions: string[], moodColors: string[] }>}
  */
 export const analyzeEmotion = async (sentence) => {
-  const envKey = import.meta.env.VITE_GEMINI_API_KEY;
-  const apiKey = (
-    (envKey && envKey.trim()) ||
-    (typeof atob !== 'undefined' ? atob("QVEuQWI4Uk42TFBpLUV4M0h3MWJuQzl3bXp0cDZFVEZQdnZIN3JSb1p5cERvQlE2UlJGQ0E=") : "")
-  ).trim();
+  const apiKey = (import.meta.env.VITE_GEMINI_API_KEY || "").trim();
 
   if (!apiKey) {
     throw new Error(
-      "Gemini API key is not configured. Please add your VITE_GEMINI_API_KEY in the .env file and restart the development server."
+      "Gemini API key is not configured. Please add your VITE_GEMINI_API_KEY in the Vercel Environment Variables or local .env file."
     );
   }
 
